@@ -1,0 +1,111 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: white;
+  color: black;
+  font-family: sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background: #f0f0f0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #333;
+}
+
+nav ul li {
+  margin: 0.5rem 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+#first-h1 {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+
+#first-h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+#first-button {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#first-button:hover {
+  background-color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  header {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  #first-h1 {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #first-h1 {
+    font-size: 1.5rem;
+  }
+
+  #first-h3 {
+    font-size: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+
+  #first-button {
+    width: 80%;
+    font-size: 1rem;
+  }
+}

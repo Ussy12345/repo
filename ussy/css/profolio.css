@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+    display: flex;
+}
+.protifolioContaner {
+    background-color: rgb(49, 40, 40);
+    position: relative;
+    padding: 30px;
+    height: 50rem;
+    width: 20rem;
+}
+img{
+    border-radius: 3px;
+    margin-bottom: 3rem;
+}
+nav {
+    display: flex;
+}
+a{
+    text-decoration: none;
+    color: rgb(27, 27, 26);
+    height: 2rem;
+    width: 15rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+li{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+a:hover{
+    border-bottom:solid 1px wheat;
+    animation: alternate-reverse;
+}
+.h1-heading{
+    position: relative;
+    left: 3rem;
+    top: 2rem;
+}
+iframe{
+    height: 30rem;
+    width: 40rem;
+}

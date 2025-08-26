@@ -1,0 +1,818 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: white;
+    color: black;
+    overflow-x: hidden;
+  }
+  nav ul{
+    background-color: white;
+    height: 4rem;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    box-shadow:0 3px 3px rgb(133, 132, 132);
+    z-index: 1;
+}
+  
+  /* On screens that are 992px wide or less, the background color is blue */
+  /* @media screen and (max-width: 992px) {
+    body {
+      background-color: blue;
+      color: rgb(7, 7, 7);
+      font-family: cursive;
+      font-size: 15px;
+    }
+  }
+  
+  /* On screens that are 600px wide or less, the background color is olive */
+  /* @media screen and (max-width: 600px) {
+    body {
+      background-color: white;
+      color: rgb(7, 7, 7);
+    }
+    #first-real{
+        font-size: 10px;
+    }
+    header{
+        font-size: 30px;
+    }
+    li{
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 10px;
+        position: relative;
+        left: 8rem;
+        }
+}  */
+h1,h2{
+    font-size: 30px;
+}
+header{
+    background-image: url(images/mac.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 45rem;
+    margin-bottom: 10rem;
+}
+#heading-logo{
+   margin-right: 48rem;
+}
+#heading-logo:hover{
+    background-color: transparent;
+}
+ul ,li{
+    list-style-type: none;
+}
+ul{top: 0;}
+a{
+   padding: 1rem; 
+   text-decoration: none;
+   color: black;
+}
+a:hover{
+    background-color: rgb(230, 230, 243);
+    border-radius: 0.1rem;
+}
+#first-h1{
+    color: white;
+    position: relative;
+    top: 10rem;
+    left: 3rem;
+    font-size: 70px;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-stretch: semi-expanded;
+}
+#first-h3{
+    color: white;
+    position: relative;
+    top: 15rem;
+    left: 3rem;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-stretch: semi-expanded;
+}
+#first-button{
+    height: 3rem;
+    width: 14rem;
+    position: relative;
+    top: 15rem;
+    left: 3rem;
+    color: black;
+    background-color: rgb(128, 128, 128);
+    font-size: 15px;
+    border: none;
+}
+#first-button:hover,#second-button:hover{
+    background-color: rgb(177, 174, 174);
+}
+.fisrt-section,.About-the-company{
+    text-align: center;
+    font-weight: 100;
+}
+.fisrt-section,.About-the-compan{
+    text-align: center;
+    font-weight: 100;
+}
+.fisrt-section{
+    margin-bottom: 7rem;
+}
+#first-real{
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0rem 5rem 5rem;
+    gap: 4rem;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+     gap: 1rem; 
+     margin-bottom: 5rem*/
+} 
+p{
+    font-size: larger;
+}
+.third-secton{
+    background-color: rgb(240, 236, 236);
+    height: 40rem;
+    display: flex;
+    margin-bottom: 10rem;
+}
+#tex-container{
+    padding: 4rem;
+    position: relative;
+    top: 7rem;
+}
+#second-button{
+    height: 3rem;
+    width: 14rem;
+    position: relative;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+.link{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    right: 1rem;
+}
+.link:hover{
+    background-color: transparent;
+}
+.image-container{
+    background-color: transparent;
+    height: 20rem;
+    position: relative;
+    top: 6rem;
+    width: 35rem;
+    border-radius: 5px;
+    background-image: url(images/phone.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.image-container{
+    position: relative;
+    top:10rem
+}
+.close{
+    display: none;
+}
+.second-img{
+    height: 13rem;
+    width: 20rem;
+
+}
+.more{
+    background-color: white;
+    height: 30rem;
+    width: 20rem;
+    box-shadow: 0px 0px 2px 2px rgba(161, 160, 160, 0.788);
+}
+#first-reale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 5rem;
+}
+.conatiner{
+    position: relative;
+    left: 1rem;
+}
+#people-button{
+    position: relative;
+    left: 1rem;
+    width: 18rem;
+    text-align: center;
+    background-color: whitesmoke;
+    color: black;
+    height: 3rem;
+    border: none;
+}
+#people-button:hover{
+    background-color: gray;
+    transition: 0.5s;
+}
+#five-section{
+    gap: 13rem;
+    margin-bottom: 10rem;
+    background-color: rgb(94, 92, 92);
+    color: white;
+    font-size: 20px;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+h1,p{
+    font-weight: 300;
+}
+.four-img{
+    height: 13rem;
+    width: 20rem;
+}
+.four-img:hover{
+   opacity: 0.6;
+}
+.skills{
+    background-color: rgb(224, 222, 222);
+    height: 20rem;
+    padding-top: 2rem;
+}
+.myProgress{
+    position: relative;
+    top: 6rem;
+    height: 2rem;
+    width: 40rem;
+    background-color: rgb(117, 116, 116);
+}
+.all-progress{
+    display: flex;
+    flex-direction: column;
+}
+.myBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 39rem;
+    background-color: rgb(150, 148, 148);
+    color: white;
+    text-align: center;
+}
+.myBa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 27rem;
+    background-color: rgb(133, 131, 131);
+    color: white;
+    text-align: center;
+}
+.c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 20rem;
+    background-color: rgb(133, 131, 131);
+    color: white;
+    text-align: center;
+}
+#tex-second{
+    position: relative;
+    margin-right: 5rem;
+    top: 7rem;
+    margin-bottom: 6rem;
+}
+.so-secton{
+    background-color: rgb(240, 236, 236);
+    height: 30rem;
+    display: flex;
+    margin-bottom: 10rem;
+    padding:  30px 30px;
+}
+.myB{
+    width: 20rem;
+    background-color: aqua;
+}
+#last-last-list{
+    background-color: rgb(249, 250, 250);
+    height: 30rem;
+    width: 25rem;
+    position: relative;
+    top: 17rem;
+    left: 2rem;
+}
+#last-last-list:hover{
+    box-shadow: 0px 9px 4px  black;
+    cursor: pointer;
+}
+.inner-div{
+    height: 7rem;
+    width: 25rem;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+.outer-div{
+    display: flex;
+    flex-direction: column;
+}
+#Basic{
+    height: 4rem;
+    padding: 2px 2px 2px;
+    background-color: rgb(249, 250, 250);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:2px black;
+    font-weight: 100;
+    font-size: 20px;
+    gap: 10rem;
+}
+#basic{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    height: 60rem;
+    background-color: gray;
+}
+#in-inner{
+    background-color: rgb(218, 218, 218);
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#sign{
+    width: 7rem;
+    height: 3rem;
+    background-color: #000;
+    color: white;
+    border: none;
+    font-size: 15px;
+}
+#sign:hover{
+    background-color: rgb(202, 201, 201);
+    color: black;
+}
+.five{
+    text-align: center;
+}
+#list-country{
+    padding: 3rem;
+}
+.tag{
+    margin-bottom: 2rem;
+}
+input{
+    height: 3rem;
+    width: 80rem;
+    background-color: white;
+    position: relative;
+    border: solid 1px rgb(182, 179, 179);
+    left: 2rem;
+}
+::placeholder{
+    color:#7e7c7c;
+    font-size: 15px;
+    font-weight: 100;
+    position: relative;
+    left: 1rem;
+}
+.last-button{
+    width: 10rem;
+    height: 3rem;
+    background-color: #000;
+    color: white;
+    border: none;
+    font-size: 15px;
+    position: relative;
+    left: 2rem;
+    margin-bottom: 4rem;
+}
+.last-button:hover{
+    background-color: rgb(202, 201, 201);
+    color: black;
+}
+.much{
+    height: 40rem;
+    width: 90rem;
+}
+footer{
+    height: 20rem;
+    text-align: center;
+    position: relative;
+    top: 10rem;
+    background-color: #000;
+    color: white;
+    font-weight: 100;
+}
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  header {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  #first-h1 {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #first-h1 {
+    font-size: 1.5rem;
+  }
+
+  #first-h3 {
+    font-size: 1rem;
+  }
+
+nav ul{
+    background-color: white;
+    height: 15rem;
+    color: white;
+    width: 50%;
+    position: relative;
+    right: 3rem;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-right:-2rem;
+    margin-top: 4rem;
+    position: fixed;
+    border-radius: 0.5rem;
+    box-shadow:0 3px 3px rgb(133, 132, 132);
+    z-index: 1;
+}
+
+body{
+    background-color:rgb(209, 208, 208) ;
+}
+li{
+    margin-top: 2rem;
+    margin-right: 15rem;
+}
+  #first-button {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .openNav{
+    background-color: rgb(66, 66, 66);
+    color: white;
+    height: 2rem;
+    width: 4rem;
+    border: none;
+    position: fixed;
+    left: 25rem;
+    /* padding: 1px 2px; */
+    font-size: 1rem;
+    z-index: 1;
+    border-radius: 2px;
+  }
+  .close{
+    height: 3rem;
+    width: 5rem;
+    background-color: transparent;
+    color: rgb(2, 2, 2);
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+    left: -1rem;
+    top: -11rem;
+    border: none;
+    display: initial;
+  }
+   .close:hover{
+    color: rgb(245, 5, 5);
+    cursor: pointer;
+   }
+   #first-reale{
+     display: grid;
+    text-align: start;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 3rem 1rem;
+    gap: 0.5rem;
+    margin-bottom: 8rem;
+   }
+   #five-section{
+    gap: 4rem;
+    margin-bottom: 10rem;
+    background-color: rgb(94, 92, 92);
+    color: white;
+    font-size: 20px;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+li{
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 10px;
+        position: relative;
+        left: 8rem;
+        }
+.so-secton{
+    background-color: rgb(240, 236, 236);
+    height: 50rem;
+    display: flex;
+    margin-bottom: 10rem;
+    padding:  30px 30px;
+    flex-direction: column;
+}
+.myProgress{
+    position: relative;
+    top: 6rem;
+    height: 2rem;
+    width: 26rem;
+    background-color: rgb(117, 116, 116);
+}
+.all-progress{
+    display: flex;
+    flex-direction: column;
+}
+.myBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 20rem;
+    background-color: rgb(150, 148, 148);
+    color: white;
+    text-align: center;
+}
+.myBa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 60%;
+    background-color: rgb(133, 131, 131);
+    color: white;
+    text-align: center;
+}
+.c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 10rem;
+    background-color: rgb(133, 131, 131);
+    color: white;
+    text-align: center;
+}
+#first-real{
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   flex-direction: column;
+    padding: 0rem 5rem 5rem;
+    gap: 4rem;
+}
+input{
+    width: 20rem;
+}
+#basic{
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20rem;
+    margin-bottom: 13rem;
+}
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+  header {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  #first-h1 {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #first-h1 {
+    font-size: 1.5rem;
+  }
+
+  #first-h3 {
+    font-size: 1rem;
+  }
+
+nav ul{
+    background-color: white;
+    height: 15rem;
+    color: white;
+    width: 50%;
+    position: relative;
+    right: 3rem;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-right:-2rem;
+    margin-top: 4rem;
+    position: fixed;
+    border-radius: 0.5rem;
+    box-shadow:0 3px 3px rgb(133, 132, 132);
+    z-index: 1;
+}
+
+body{
+    background-color:rgb(209, 208, 208) ;
+}
+li{
+    margin-top: 2rem;
+    margin-right: 15rem;
+}
+  #first-button {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .openNav{
+    background-color: rgb(66, 66, 66);
+    color: white;
+    height: 2rem;
+    width: 4rem;
+    border: none;
+    position: fixed;
+    left: 25rem;
+    /* padding: 1px 2px; */
+    font-size: 1rem;
+    z-index: 1;
+    border-radius: 2px;
+  }
+  .close{
+    height: 3rem;
+    width: 5rem;
+    background-color: transparent;
+    color: rgb(2, 2, 2);
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+    left: -1rem;
+    top: -11rem;
+    border: none;
+    display: initial;
+  }
+   .close:hover{
+    color: rgb(245, 5, 5);
+    cursor: pointer;
+   }
+   #first-reale{
+     display: grid;
+    text-align: start;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 3rem 1rem;
+    gap: 0.5rem;
+    margin-bottom: 8rem;
+   }
+   #five-section{
+    gap: 4rem;
+    margin-bottom: 10rem;
+    background-color: rgb(94, 92, 92);
+    color: white;
+    font-size: 20px;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+li{
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 10px;
+        position: relative;
+        left: 8rem;
+        }
+.so-secton{
+    background-color: rgb(240, 236, 236);
+    height: 50rem;
+    display: flex;
+    margin-bottom: 10rem;
+    padding:  30px 30px;
+    flex-direction: column;
+}
+.myProgress{
+    position: relative;
+    top: 6rem;
+    height: 2rem;
+    width: 26rem;
+    background-color: rgb(117, 116, 116);
+}
+.all-progress{
+    display: flex;
+    flex-direction: column;
+}
+.myBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 20rem;
+    background-color: rgb(150, 148, 148);
+    color: white;
+    text-align: center;
+}
+.myBa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 60%;
+    background-color: rgb(133, 131, 131);
+    color: white;
+    text-align: center;
+}
+.c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 10rem;
+    background-color: rgb(133, 131, 131);
+    color: white;
+    text-align: center;
+}
+#first-real{
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   flex-direction: column;
+    padding: 0rem 5rem 5rem;
+    gap: 4rem;
+}
+input{
+    width: 20rem;
+}
+#basic{
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20rem;
+    margin-bottom: 13rem;
+}
+}
+/* #first-reale{
+  display: grid;
+ text-align: start;
+ grid-template-rows: 1fr 1fr 1fr 1fr;
+ padding: 3rem 1rem;
+ gap: 0.5rem;
+ margin-bottom: 8rem;
+} */
