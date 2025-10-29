@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookieHub - Your Digital Cookie Paradise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffd166;
+            --dark: #2d3047;
+            --light: #f7f7f7;
+            --text: #333;
+            --bg: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --primary: #ff8e8e;
+            --secondary: #6de0d9;
+            --accent: #ffdf8e;
+            --dark: #1a1c2b;
+            --light: #2d3047;
+            --text: #f7f7f7;
+            --bg: #1a1c2b;
+            --card-bg: #2d3047;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Onboarding Styles */
+        #onboarding {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .onboarding-container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .onboarding-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .onboarding-step.active {
+            display: block;
+        }
+
+        .onboarding-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .progress-dot.active {
+            background: white;
+        }
+
+        .onboarding-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .onboarding-text {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        /* Main App Styles */
+        #main-app {
+            display: none;
+        }
+
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 2px solid var(--primary);
+        }
+
+        .profile-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: var(--card-bg);
+            box-shadow: 0 5px 15px var(--shadow);
+            border-radius: 10px;
+            padding: 10px 0;
+            width: 200px;
+            display: none;
+            z-index: 10;
+        }
+
+        .profile:hover .profile-menu {
+            display: block;
+        }
+
+        .profile-menu a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .profile-menu a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        .cookie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .cookie-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .cookie-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .cookie-content {
+            padding: 20px;
+        }
+
+        .cookie-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .cookie-description {
+            margin-bottom: 15px;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .cookie-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cookie-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .cookie-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .like-btn.liked {
+            color: #ff6b6b;
+        }
+
+        .like-count {
+            margin-right: 15px;
+        }
+
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .nav-links {
+                margin: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cookie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Onboarding Process -->
+    <div id="onboarding">
+        <div class="onboarding-container">
+            <!-- Step 1: Welcome -->
+            <div class="onboarding-step active" id="step1">
+                <div class="onboarding-progress">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <h2 class="onboarding-title">Welcome to CookieHub!</h2>
+                <p class="onboarding-text">Discover the most delicious cookies in the world. Join our community of cookie lovers today!</p>
+                <button class="btn btn-primary" onclick="nextStep(2)">Get Started</button>
+            </div>
+
+            <!-- Step 2: Sign Up -->
+            <div class="onboarding-step" id="step2">
+                <div class="onboarding-progress">
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <h2 class="onboarding-title">Create Your Account</h2>
+                <p class="onboarding-text">Join our cookie community to save favorites and get personalized recommendations.</p>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Choose a username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Your email address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Create a password">
+                </div>
+                
+                <button class="btn btn-primary" onclick="nextStep(3)">Continue</button>
+                <button class="btn btn-secondary" onclick="nextStep(1)" style="margin-left: 10px;">Back</button>
+            </div>
+
+            <!-- Step 3: Profile Picture -->
+            <div class="onboarding-step" id="step3">
+                <div class="onboarding-progress">
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <h2 class="onboarding-title">Add a Profile Picture</h2>
+                <p class="onboarding-text">Upload a photo to personalize your profile (optional).</p>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.2); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user" style="font-size: 60px; color: white;"></i>
+                    </div>
+                    <button class="btn btn-secondary">Upload Image</button>
+                </div>
+                
+                <button class="btn btn-primary" onclick="nextStep(4)">Continue</button>
+                <button class="btn btn-secondary" onclick="nextStep(2)" style="margin-left: 10px;">Back</button>
+            </div>
+
+            <!-- Step 4: Preferences -->
+            <div class="onboarding-step" id="step4">
+                <div class="onboarding-progress">
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot active"></div>
+                </div>
+                <h2 class="onboarding-title">Almost Done!</h2>
+                <p class="onboarding-text">Tell us about your cookie preferences to get personalized recommendations.</p>
+                
+                <div class="form-group">
+                    <label>Favorite Cookie Types</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                        <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px;">Chocolate Chip</span>
+                        <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px;">Oatmeal</span>
+                        <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px;">Sugar</span>
+                        <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px;">Peanut Butter</span>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" onclick="completeOnboarding()">Start Exploring!</button>
+                <button class="btn btn-secondary" onclick="nextStep(3)" style="margin-left: 10px;">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app">
+        <!-- Header -->
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-cookie-bite"></i>
+                    CookieHub
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#cookies">Cookies</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="profile">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Profile" class="profile-img">
+                        <span>John Doe</span>
+                        <div class="profile-menu">
+                            <a href="#"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="#"><i class="fas fa-heart"></i> Favorites</a>
+                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>Discover Cookie Paradise</h1>
+            <p>Explore our collection of handcrafted cookies from around the world. Each recipe is carefully curated for the ultimate cookie experience.</p>
+            <button class="btn btn-primary" style="background: white; color: var(--primary);">Explore Cookies</button>
+        </section>
+
+        <!-- Cookies Section -->
+        <section class="container" id="cookies">
+            <h2 class="section-title">Our Cookie Collection</h2>
+            <div class="cookie-grid">
+                <!-- Cookie Card 1 -->
+                <div class="cookie-card">
+                    <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Chocolate Chip Cookie" class="cookie-img">
+                    <div class="cookie-content">
+                        <h3 class="cookie-title">Classic Chocolate Chip</h3>
+                        <p class="cookie-description">Our signature cookie with rich chocolate chunks and a soft, chewy center.</p>
+                        <div class="cookie-meta">
+                            <div class="cookie-price">$4.99</div>
+                            <div class="cookie-actions">
+                                <span class="like-count">128</span>
+                                <button class="like-btn"><i class="far fa-heart"></i></button>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Card 2 -->
+                <div class="cookie-card">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Oatmeal Cookie" class="cookie-img">
+                    <div class="cookie-content">
+                        <h3 class="cookie-title">Oatmeal Raisin Delight</h3>
+                        <p class="cookie-description">Hearty oatmeal cookies packed with plump raisins and a hint of cinnamon.</p>
+                        <div class="cookie-meta">
+                            <div class="cookie-price">$4.49</div>
+                            <div class="cookie-actions">
+                                <span class="like-count">96</span>
+                                <button class="like-btn"><i class="far fa-heart"></i></button>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Card 3 -->
+                <div class="cookie-card">
+                    <img src="https://images.unsplash.com/photo-1607919529906-c691f8e3bdc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Sugar Cookie" class="cookie-img">
+                    <div class="cookie-content">
+                        <h3 class="cookie-title">Vanilla Sugar Cookie</h3>
+                        <p class="cookie-description">Buttery soft sugar cookies with a delicate vanilla flavor and sweet icing.</p>
+                        <div class="cookie-meta">
+                            <div class="cookie-price">$3.99</div>
+                            <div class="cookie-actions">
+                                <span class="like-count">142</span>
+                                <button class="like-btn"><i class="far fa-heart"></i></button>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Card 4 -->
+                <div class="cookie-card">
+                    <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Peanut Butter Cookie" class="cookie-img">
+                    <div class="cookie-content">
+                        <h3 class="cookie-title">Peanut Butter Bliss</h3>
+                        <p class="cookie-description">Rich peanut butter cookies with a perfect crisscross pattern and soft texture.</p>
+                        <div class="cookie-meta">
+                            <div class="cookie-price">$4.79</div>
+                            <div class="cookie-actions">
+                                <span class="like-count">87</span>
+                                <button class="like-btn"><i class="far fa-heart"></i></button>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Card 5 -->
+                <div class="cookie-card">
+                    <img src="https://images.unsplash.com/photo-1617290065619-ebab5f69a5b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Double Chocolate Cookie" class="cookie-img">
+                    <div class="cookie-content">
+                        <h3 class="cookie-title">Double Chocolate Indulgence</h3>
+                        <p class="cookie-description">For true chocolate lovers - a rich cocoa base loaded with chocolate chunks.</p>
+                        <div class="cookie-meta">
+                            <div class="cookie-price">$5.49</div>
+                            <div class="cookie-actions">
+                                <span class="like-count">203</span>
+                                <button class="like-btn"><i class="far fa-heart"></i></button>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Card 6 -->
+                <div class="cookie-card">
+                    <img src="https://images.unsplash.com/photo-1621873483716-19388e082e6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Snickerdoodle Cookie" class="cookie-img">
+                    <div class="cookie-content">
+                        <h3 class="cookie-title">Cinnamon Snickerdoodle</h3>
+                        <p class="cookie-description">Soft, pillowy cookies rolled in cinnamon sugar for the perfect treat.</p>
+                        <div class="cookie-meta">
+                            <div class="cookie-price">$4.29</div>
+                            <div class="cookie-actions">
+                                <span class="like-count">115</span>
+                                <button class="like-btn"><i class="far fa-heart"></i></button>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="logo" style="color: white; justify-content: center; margin-bottom: 20px;">
+                    <i class="fas fa-cookie-bite"></i>
+                    CookieHub
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+                <p class="copyright">© 2023 CookieHub. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Onboarding functionality
+        function nextStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.onboarding-step').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show the selected step
+            document.getElementById(`step${step}`).classList.add('active');
+            
+            // Update progress dots
+            document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+                if (index < step) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function completeOnboarding() {
+            document.getElementById('onboarding').style.display = 'none';
+            document.getElementById('main-app').style.display = 'block';
+            
+            // Save user data to localStorage
+            const userData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                completedOnboarding: true
+            };
+            localStorage.setItem('cookieHubUser', JSON.stringify(userData));
+        }
+
+        // Check if user has completed onboarding
+        window.addEventListener('DOMContentLoaded', () => {
+            const userData = localStorage.getItem('cookieHubUser');
+            if (userData && JSON.parse(userData).completedOnboarding) {
+                document.getElementById('onboarding').style.display = 'none';
+                document.getElementById('main-app').style.display = 'block';
+            }
+        });
+
+        // Dark mode toggle
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Like button functionality
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                const isLiked = this.classList.contains('liked');
+                
+                if (isLiked) {
+                    this.classList.remove('liked');
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    // Decrease like count
+                    const countElement = this.parentElement.querySelector('.like-count');
+                    countElement.textContent = parseInt(countElement.textContent) - 1;
+                } else {
+                    this.classList.add('liked');
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    // Increase like count
+                    const countElement = this.parentElement.querySelector('.like-count');
+                    countElement.textContent = parseInt(countElement.textContent) + 1;
+                }
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const cookieTitle = this.closest('.cookie-card').querySelector('.cookie-title').textContent;
+                const originalText = this.textContent;
+                
+                this.textContent = 'Added!';
+                this.style.background = 'var(--secondary)';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = 'var(--primary)';
+                }, 2000);
+                
+                // Here you would typically add to a cart system
+                console.log(`Added ${cookieTitle} to cart`);
+            });
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('cookieHubUser');
+                document.getElementById('main-app').style.display = 'none';
+                document.getElementById('onboarding').style.display = 'flex';
+                nextStep(1);
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
