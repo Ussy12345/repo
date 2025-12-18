@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ummah Quran | صوت القرآن</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- App Header -->
+        <header class="app-header">
+            <h1><i class="fas fa-book-quran"></i> Ummah Quran</h1>
+            <p>Listen to the Holy Quran</p>
+        </header>
+
+        <!-- Audio Player (Initially Hidden) -->
+        <div class="audio-player" id="audioPlayer">
+            <div class="player-info">
+                <h3 id="nowPlayingTitle">Select a Surah</h3>
+                <p id="nowPlayingReciter">Reciter: Sheikh Abdul Basit</p>
+            </div>
+            <audio id="audioElement" controls>
+                Your browser does not support the audio element.
+            </audio>
+            <button class="close-player" id="closePlayerBtn"><i class="fas fa-times"></i></button>
+        </div>
+   <!-- Add this after the audio-player div, before the main-content div -->
+<div class="arabic-text-container" id="arabicTextContainer">
+    <div class="arabic-text-header">
+        <h3><i class="fas fa-book"></i> Arabic Text</h3>
+        <button class="close-text" id="closeTextBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="arabic-text-content" id="arabicTextContent">
+        <p class="placeholder">Select a Surah to view its Arabic text.</p>
+    </div>
+</div>
+        <!-- Main Content: Surah List -->
+        <main class="main-content">
+            <div class="surah-list-header">
+                <h2><i class="fas fa-list"></i> Surahs (Chapters)</h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search Surah...">
+                </div>
+            </div>
+
+            <!-- The list will be populated by JavaScript -->
+            <ul class="surah-list" id="surahList">
+                <li class="loading">Loading Surahs... <i class="fas fa-spinner fa-spin"></i></li>
+            </ul>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Made with <i class="fas fa-heart"></i> for the Ummah</p>
+        </footer>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
+</html>
